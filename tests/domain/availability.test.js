@@ -25,3 +25,7 @@ test("room and entire-property reservations conflict within a property", () => {
 test("checkout and next check-in do not conflict", () => {
   assert.equal(hasInventoryConflict(stay(), stay({ checkIn: "2026-11-12", checkOut: "2026-11-14" })), false);
 });
+
+test("manual blocks are inventory conflicts", () => {
+  assert.equal(hasInventoryConflict(stay(), stay({ status: "blocked", unitId: "room-1" })), true);
+});
