@@ -1,0 +1,1 @@
+export default function ResetPasswordPage() { return <main className="mx-auto max-w-md px-5 py-20"><h1 className="text-3xl font-semibold">Reset link received</h1><p className="mt-4 leading-7 text-stone-600">Follow the link from your email to finish setting a new password.</p></main>; }

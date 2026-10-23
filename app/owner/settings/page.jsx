@@ -1,0 +1,1 @@
+export default function OwnerSettingsPage() { return <section><h1 className="text-3xl font-semibold">Settings</h1><p className="mt-3 text-stone-600">Business profile editing will be available here after the initial property workflow is connected.</p></section>; }

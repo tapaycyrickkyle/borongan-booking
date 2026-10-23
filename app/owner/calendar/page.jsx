@@ -1,0 +1,1 @@
+export default function OwnerCalendarPage() { return <section><h1 className="text-3xl font-semibold">Availability calendar</h1><p className="mt-3 text-stone-600">Use the property manager to add rates and owner blocks. Confirmed stays are enforced by the reservation service.</p></section>; }

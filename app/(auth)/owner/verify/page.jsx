@@ -1,0 +1,1 @@
+export default function VerifyPage() { return <main className="mx-auto max-w-md px-5 py-20"><h1 className="text-3xl font-semibold">Check your email</h1><p className="mt-4 leading-7 text-stone-600">Use the verification link we sent, then sign in to open your owner dashboard.</p></main>; }
