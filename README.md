@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Borongan Stays
 
-## Getting Started
+Accommodation reservation marketplace for Borongan City, Eastern Samar.
 
-First, run the development server:
+The application is a JavaScript Next.js App Router project deployed to Cloudflare Workers through OpenNext. D1 stores application data, R2 stores private accommodation images, and KV provides soft rate limiting. Guests request reservations without accounts or online payments.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Local development
+
+Install dependencies and start Next.js:
+
+```powershell
+npm.cmd install
+npm.cmd run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Copy `.dev.vars.example` to `.dev.vars` for local secrets. Do not commit `.dev.vars` or real credentials.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```powershell
+npm.cmd run lint
+npm.cmd run test:unit
+npm.cmd run build
+```
 
-## Learn More
+## Cloudflare setup
 
-To learn more about Next.js, take a look at the following resources:
+1. Log in with `npx wrangler login`.
+2. Create a D1 database with `npx wrangler d1 create boronganbooking-db` and put its ID in `wrangler.jsonc`.
+3. Create the image bucket with `npx wrangler r2 bucket create boronganbooking-images`.
+4. Create a KV namespace with `npx wrangler kv namespace create RATE_LIMITS` and put its ID in `wrangler.jsonc`.
+5. Apply migrations with `npx wrangler d1 migrations apply boronganbooking-db --remote`.
+6. Add production secrets with `npx wrangler secret put BETTER_AUTH_SECRET`, `npx wrangler secret put RESEND_API_KEY`, and `npx wrangler secret put EMAIL_FROM`.
+7. Update the public app URL and email sender after the production domain is known.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+OpenNext uses `.open-next/worker.js` as the Worker entrypoint and the JavaScript `open-next.config.mjs` adapter configuration. Preview the Worker runtime with:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```powershell
+npm.cmd run preview
+```
 
-## Deploy on Vercel
+Deploy only after the D1, R2, KV, secret, and email configuration is ready:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```powershell
+npm.cmd run deploy
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Authentication and first admin
+
+Better Auth handles owner email/password accounts, verification, password reset, and sessions. Guests do not register. The first administrator is provisioned through the application’s documented setup path after the production database exists; admin access is never created through public signup.
+
+## Scope exclusions
+
+This project deliberately does not implement online payments, commissions, fees, invoicing, billing, payment tracking, or overdue reminders.
