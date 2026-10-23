@@ -1,0 +1,16 @@
+CREATE INDEX properties_business_idx ON properties (business_id, publication_status);
+CREATE INDEX properties_public_idx ON properties (publication_status, archived_at);
+CREATE INDEX units_property_idx ON units (property_id, is_active, rental_mode);
+CREATE INDEX property_images_property_idx ON property_images (property_id, moderation_status, sort_order);
+CREATE INDEX unit_images_unit_idx ON unit_images (unit_id, moderation_status, sort_order);
+CREATE INDEX nightly_rates_lookup_idx ON nightly_rates (unit_id, starts_on, ends_on);
+CREATE INDEX special_rates_lookup_idx ON special_rates (unit_id, starts_on, ends_on);
+CREATE INDEX blocked_dates_lookup_idx ON blocked_dates (unit_id, starts_on, ends_on);
+CREATE INDEX reservations_unit_dates_idx ON reservations (unit_id, check_in, check_out, status);
+CREATE INDEX reservations_property_dates_idx ON reservations (property_id, check_in, check_out, status);
+CREATE INDEX reservations_status_idx ON reservations (status, check_out);
+CREATE INDEX reservation_history_lookup_idx ON reservation_status_history (reservation_id, created_at);
+CREATE INDEX guest_tokens_reservation_idx ON guest_access_tokens (reservation_id, revoked_at, expires_at);
+CREATE INDEX notifications_recipient_idx ON notifications (recipient_user_id, read_at, created_at);
+CREATE INDEX audit_logs_entity_idx ON audit_logs (entity_type, entity_id, created_at);
+CREATE INDEX audit_logs_actor_idx ON audit_logs (actor_user_id, created_at);
