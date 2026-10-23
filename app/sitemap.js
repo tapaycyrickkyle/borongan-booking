@@ -1,0 +1,1 @@
+export default function sitemap() { const base = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"; return [{ url: `${base}/`, changeFrequency: "daily" }, { url: `${base}/search`, changeFrequency: "daily" }]; }

@@ -1,0 +1,4 @@
+import { getDb } from "../../../lib/db.js";
+
+export const dynamic = "force-dynamic";
+export default async function AdminBusinessesPage() { const result = await (await getDb()).prepare("SELECT b.*, u.email AS owner_email FROM businesses b JOIN \"user\" u ON u.id = b.owner_user_id ORDER BY b.created_at DESC").all(); return <section><h1 className="text-3xl font-semibold">Businesses</h1><div className="mt-8 overflow-x-auto border border-stone-200 bg-white"><table className="w-full min-w-[650px] text-left text-sm"><thead className="border-b border-stone-200 bg-stone-50"><tr><th className="p-4">Business</th><th className="p-4">Owner</th><th className="p-4">Status</th></tr></thead><tbody>{(result.results ?? []).map((business) => <tr key={business.id} className="border-b border-stone-100"><td className="p-4 font-medium">{business.name}</td><td className="p-4">{business.owner_email}</td><td className="p-4">{business.status}</td></tr>)}</tbody></table></div></section>; }
