@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPublishedBusinessRooms } from "../../../../lib/public.js";
-import { getMockBusiness } from "../../../../lib/mock-public.js";
 
 export const dynamic = "force-dynamic";
 
@@ -13,21 +12,10 @@ function formatPrice(centavos) {
 export default async function BusinessRoomsPage({ params }) {
   const { id } = await params;
   const data = await getPublishedBusinessRooms(id);
-  const mock = data ? null : getMockBusiness(id);
-  if (!data && !mock) notFound();
+  if (!data) notFound();
 
-  const business = data?.business ?? { name: mock.business_name, description: mock.business_description };
-  const rooms = data?.rooms ?? mock.properties.flatMap((property) => property.units.map((unit) => ({
-    unit_id: unit.id,
-    unit_name: unit.name,
-    rental_mode: unit.rental_mode,
-    capacity: unit.capacity,
-    property_slug: property.slug,
-    property_title: property.title,
-    location_text: property.location_text,
-    price_per_night: unit.price_per_night,
-    unit_image_key: unit.unit_image_key,
-  })));
+  const business = data.business;
+  const rooms = data.rooms;
 
   return (
     <main className="mx-auto max-w-6xl px-5 py-10 lg:px-8">

@@ -2,12 +2,11 @@ import Link from "next/link";
 import ListingCard from "../components/public/listing-card.jsx";
 import SearchForm from "../components/public/search-form.jsx";
 import { groupUnitsByBusiness, searchPublishedUnits } from "../lib/public.js";
-import { mockGroups } from "../lib/mock-public.js";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const groups = [...groupUnitsByBusiness(await searchPublishedUnits({})), ...mockGroups];
+  const groups = groupUnitsByBusiness(await searchPublishedUnits({}));
   const properties = groups.flatMap((group) => group.properties);
 
   return (
