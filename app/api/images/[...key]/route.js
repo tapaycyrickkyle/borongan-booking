@@ -1,4 +1,4 @@
-import { readImage } from "../../../../lib/r2.js";
+import { readImage } from "../../../../lib/image-storage.js";
 import { requireUser } from "../../../../lib/permissions.js";
 
 export async function GET(request, context) {

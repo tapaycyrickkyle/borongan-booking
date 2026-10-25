@@ -4,10 +4,9 @@ export default function PublicLayout({ children }) {
   return (
     <div className="min-h-screen bg-stone-50 text-stone-950">
       <header className="border-b border-stone-200 bg-white">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 lg:px-8">
-          <Link href="/" className="text-base font-semibold tracking-tight">Borongan Stays</Link>
-          <div className="flex items-center gap-4 text-sm">
-            <Link href="/search" className="text-stone-600 hover:text-stone-950">Search stays</Link>
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-y-3 px-5 py-4 lg:px-8">
+          <Link href="/" className="text-base font-medium tracking-tight">Booking Borongan</Link>
+          <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 text-sm">
             <Link href="/owner/sign-in" className="border border-stone-300 px-4 py-2 font-medium hover:bg-stone-50">Owner sign in</Link>
           </div>
         </div>

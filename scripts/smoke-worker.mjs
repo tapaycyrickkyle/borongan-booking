@@ -4,4 +4,4 @@ for (const path of ["/", "/search", "/robots.txt", "/sitemap.xml"]) {
   if (!response.ok) throw new Error(`${path} returned ${response.status}`);
   console.log(`${response.status} ${path}`);
 }
-console.log("Public Worker smoke checks passed. Authenticated, email, R2, KV, and D1 mutation flows need configured preview bindings.");
+console.log("Public Worker smoke checks passed. Authenticated, Neon image, and Neon rate-limit mutation flows need configured preview secrets.");

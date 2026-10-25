@@ -21,3 +21,9 @@ body {
 * {
   border-color: #e7e5e4;
 }
+
+button,
+a[class*="bg-emerald-"],
+a[class*="border-stone-"] {
+  border-radius: 0.375rem;
+}

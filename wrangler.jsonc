@@ -7,25 +7,5 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
-  },
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "boronganbooking-db",
-      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
-      "migrations_dir": "migrations"
-    }
-  ],
-  "r2_buckets": [
-    {
-      "binding": "IMAGES",
-      "bucket_name": "boronganbooking-images"
-    }
-  ],
-  "kv_namespaces": [
-    {
-      "binding": "RATE_LIMITS",
-      "id": "REPLACE_WITH_KV_NAMESPACE_ID"
-    }
-  ]
+  }
 }

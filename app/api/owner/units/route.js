@@ -7,7 +7,7 @@ export async function POST(request) {
     const user = await requireUser(request, ["owner"]);
     const input = await request.json();
     const capacity = Number(input.capacity);
-    if (!input.propertyId || typeof input.name !== "string" || !["room", "entire_property"].includes(input.rentalMode) || !Number.isInteger(capacity) || capacity < 1 || capacity > 50) throw new Error("invalid_unit_input");
+    if (!input.propertyId || typeof input.name !== "string" || input.name.trim().length < 2 || !["room", "entire_property"].includes(input.rentalMode) || !Number.isInteger(capacity) || capacity < 1 || capacity > 50) throw new Error("invalid_unit_input");
     const db = await getDb();
     await assertPropertyOwner(db, user.id, input.propertyId);
     const id = randomUUID();

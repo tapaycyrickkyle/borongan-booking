@@ -1,6 +1,6 @@
 import { getDb } from "../../../../lib/db.js";
 import { requireUser } from "../../../../lib/permissions.js";
-import { storeImage } from "../../../../lib/r2.js";
+import { storeImage } from "../../../../lib/image-storage.js";
 
 export async function POST(request) {
   try {
