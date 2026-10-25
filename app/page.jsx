@@ -26,7 +26,7 @@ export default async function Home() {
         </div>
 
         <div className="mt-8">
-          <div className="flex items-end justify-between gap-4 border-b border-stone-200 pb-4">
+          <div className="flex items-end justify-between gap-4 pb-4">
             <div>
               <h2 className="text-2xl font-medium tracking-tight">Find a place to stay</h2>
               <p className="mt-1 text-sm text-stone-600">Browse local properties, then choose the room or unit that fits your plans.</p>
