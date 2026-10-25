@@ -8,11 +8,10 @@ This JavaScript Next.js App Router project deploys to Cloudflare Workers through
 
 ```powershell
 npm.cmd install
-Copy-Item .dev.vars.example .dev.vars
 npm.cmd run dev
 ```
 
-Set `NEON_DATABASE_URL` in `.dev.vars` to a development Neon branch. The local preview also needs a Better Auth secret with at least 32 random characters. Do not commit `.dev.vars` or real credentials.
+Create the ignored `.dev.vars` file with `NEXT_PUBLIC_APP_URL`, `BETTER_AUTH_SECRET`, and `NEON_DATABASE_URL` for local development. Use a development Neon branch and a Better Auth secret with at least 32 random characters. Do not commit `.dev.vars` or real credentials.
 
 ## Checks
 

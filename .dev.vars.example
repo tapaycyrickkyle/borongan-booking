@@ -1,3 +1,0 @@
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-BETTER_AUTH_SECRET=local-development-secret-change-me
-NEON_DATABASE_URL=postgresql://user:password@host/neondb?sslmode=require
